@@ -11,7 +11,7 @@ export class AppService {
       await this.tokenService.getCredentials();
     try {
       const { data } = await axios.post(
-        `http://${base_domain}/api/v4/${entity}`,
+        `https://${base_domain}/api/v4/${entity}`,
         dto,
         {
           headers: {
@@ -20,7 +20,7 @@ export class AppService {
           },
         },
       );
-      return data;
+      return data._embedded;
     } catch (error) {
       throw new Error(error);
     }
